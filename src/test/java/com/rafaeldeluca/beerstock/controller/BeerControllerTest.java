@@ -84,7 +84,7 @@ public class BeerControllerTest {
                 .content(asJsonString(beerDTO)))
                 .andExpect(status().isBadRequest());
     }
-
+    /*
     @Test
     void whenGETIsCalledWithValidNameThenOkStatusIsReturned() throws Exception {
         // given
@@ -269,4 +269,6 @@ public class BeerControllerTest {
 //                .content(asJsonString(quantityDTO)))
 //                .andExpect(status().isNotFound());
 //    }
+
+     */
 }
