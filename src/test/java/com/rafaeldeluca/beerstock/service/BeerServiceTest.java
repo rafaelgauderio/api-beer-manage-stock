@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
@@ -44,6 +45,30 @@ public class BeerServiceTest {
     @InjectMocks
     private BeerService beerService;
 
+    @Test
+    void whenBeerInformedThenShouldBeCreated() throws BeerAlreadyRegisteredException {
+        //given
+        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        Beer expectedSavedBeer = beerMapper.toModel(beerDTO);
+
+        //when
+        Mockito.when(beerRepository.findByName(beerDTO.getName())).thenReturn(Optional.empty());
+        Mockito.when(beerRepository.save(expectedSavedBeer)).thenReturn(expectedSavedBeer);
+
+        //then
+        BeerDTO createdBeerDTO = beerService.createBeer(beerDTO);
+        assertEquals(beerDTO.getId(), createdBeerDTO.getId());
+        assertEquals(beerDTO.getId(), createdBeerDTO.getId());
+
+    }
+
+
+
+
+
+
+
+    /*
     @Test
     void whenBeerInformedThenItShouldBeCreated() throws BeerAlreadyRegisteredException {
         // given
@@ -248,4 +273,6 @@ public class BeerServiceTest {
 //
 //        assertThrows(BeerNotFoundException.class, () -> beerService.decrement(INVALID_BEER_ID, quantityToDecrement));
 //    }
+
+     */
 }

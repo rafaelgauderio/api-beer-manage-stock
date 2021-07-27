@@ -11,10 +11,10 @@ public class BeerDTOBuilder {
     private Long id = 1L;
 
     @Builder.Default
-    private String name = "Brahma";
+    private String name = "Amstel";
 
     @Builder.Default
-    private String brand = "Ambev";
+    private String brand = "Heineken";
 
     @Builder.Default
     private int max = 50;
