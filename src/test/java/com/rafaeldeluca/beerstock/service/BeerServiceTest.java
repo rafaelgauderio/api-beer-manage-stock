@@ -64,14 +64,24 @@ public class BeerServiceTest {
         assertThat(createdBeerDTO.getName(), is(equalTo(expectedBeerDTO.getName())));
         assertThat(createdBeerDTO.getQuantity(), is(equalTo(expectedBeerDTO.getQuantity())));
 
-
+        assertThat(createdBeerDTO.getQuantity(), is(greaterThan(3)));
 
     }
 
+    //Automatizando testes na camada de serviço
+    @Test
+    void whenAlreadyRegisteredBeerInformedThenAnExceptionShouldBeThrown() {
+        // given
+        BeerDTO expectedBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        Beer duplicatedBeer = beerMapper.toModel(expectedBeerDTO);
 
+        // when
+        when(beerRepository.findByName(expectedBeerDTO.getName())).thenReturn(Optional.of(duplicatedBeer));
 
-
-
+        // then
+        //exceção lançada quando chamar beerService  em outra thread
+        assertThrows(BeerAlreadyRegisteredException.class, () -> beerService.createBeer(expectedBeerDTO));
+    }
 
 
     /*
