@@ -151,30 +151,30 @@ public class BeerControllerTest {
 
     @Test
     void whenDELETEIsCalledWithValidIdThenNoContentStatusIsReturned() throws Exception {
-       //given
+        //given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         doNothing().when(beerService).deleteById(beerDTO.getId());
 
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete(BEER_API_URL_PATH + "/" +beerDTO.getId())
-                    .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isNoContent());
-
-
-    }
-    /*
-    @Test
-    void whenDELETEIsCalledWithInvalidIdThenNotFoundStatusIsReturned() throws Exception {
-        //when
-        doThrow(BeerNotFoundException.class).when(beerService).deleteById(INVALID_BEER_ID);
-
-        // then
-        mockMvc.perform(MockMvcRequestBuilders.delete(BEER_API_URL_PATH + "/" + INVALID_BEER_ID)
+        mockMvc.perform(MockMvcRequestBuilders.delete(BEER_API_URL_PATH + "/" + beerDTO.getId())
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNoContent());
     }
+
+        @Test
+        void whenDELETEIsCalledWithInvalidIdThenNotFoundStatusIsReturned() throws Exception {
+            //when
+            doThrow(BeerNotFoundException.class).when(beerService).deleteById(INVALID_BEER_ID);
+
+            // then
+            mockMvc.perform(MockMvcRequestBuilders.delete(BEER_API_URL_PATH + "/" + INVALID_BEER_ID)
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isNotFound());
+        }
+
+    /*
 
     @Test
     void whenPATCHIsCalledToIncrementDiscountThenOKstatusIsReturned() throws Exception {

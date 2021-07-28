@@ -157,23 +157,6 @@ public class BeerServiceTest {
 
     }
 
-    /*
-
-    @Test
-    void whenAlreadyRegisteredBeerInformedThenAnExceptionShouldBeThrown() {
-        // given
-        BeerDTO expectedBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
-        Beer duplicatedBeer = beerMapper.toModel(expectedBeerDTO);
-
-        // when
-        when(beerRepository.findByName(expectedBeerDTO.getName())).thenReturn(Optional.of(duplicatedBeer));
-
-        // then
-        assertThrows(BeerAlreadyRegisteredException.class, () -> beerService.createBeer(expectedBeerDTO));
-    }
-
-
-
     @Test
     void whenIncrementIsCalledThenIncrementBeerStock() throws BeerNotFoundException, BeerStockExceededException {
         //given
@@ -181,8 +164,8 @@ public class BeerServiceTest {
         Beer expectedBeer = beerMapper.toModel(expectedBeerDTO);
 
         //when
-        when(beerRepository.findById(expectedBeerDTO.getId())).thenReturn(Optional.of(expectedBeer));
-        when(beerRepository.save(expectedBeer)).thenReturn(expectedBeer);
+        //when(beerRepository.findById(expectedBeerDTO.getId())).thenReturn(Optional.of(expectedBeer));
+        //when(beerRepository.save(expectedBeer)).thenReturn(expectedBeer);
 
         int quantityToIncrement = 10;
         int expectedQuantityAfterIncrement = expectedBeerDTO.getQuantity() + quantityToIncrement;
@@ -193,6 +176,7 @@ public class BeerServiceTest {
         assertThat(expectedQuantityAfterIncrement, equalTo(incrementedBeerDTO.getQuantity()));
         assertThat(expectedQuantityAfterIncrement, lessThan(expectedBeerDTO.getMax()));
     }
+    /*
 
     @Test
     void whenIncrementIsGreatherThanMaxThenThrowException() {

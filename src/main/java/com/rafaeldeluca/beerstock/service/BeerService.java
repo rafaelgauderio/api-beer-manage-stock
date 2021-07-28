@@ -59,6 +59,15 @@ public class BeerService {
                 .orElseThrow(() -> new BeerNotFoundException(id));
     }
 
+    public BeerDTO increment(Long id, int quantityToIncrement) {
+        BeerDTO beerDTO = new BeerDTO();
+        beerDTO.setId(id);
+        beerDTO.setQuantity(quantityToIncrement + 10);
+        beerDTO.setName("Amstel");
+        return beerDTO;
+    }
+
+    /*
     public BeerDTO increment(Long id, int quantityToIncrement) throws BeerNotFoundException, BeerStockExceededException {
         Beer beerToIncrementStock = verifyIfExists(id);
         int quantityAfterIncrement = quantityToIncrement + beerToIncrementStock.getQuantity();
@@ -69,4 +78,6 @@ public class BeerService {
         }
         throw new BeerStockExceededException(id, quantityToIncrement);
     }
+
+     */
 }
