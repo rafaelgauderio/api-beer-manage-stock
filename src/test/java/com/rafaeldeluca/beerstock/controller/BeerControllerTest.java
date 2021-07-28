@@ -135,10 +135,6 @@ public class BeerControllerTest {
 
     }
 
-    /*
-
-
-
     @Test
     void whenGETListWithoutBeersIsCalledThenOkStatusIsReturned() throws Exception {
         // given
@@ -152,6 +148,8 @@ public class BeerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+    /*
 
     @Test
     void whenDELETEIsCalledWithValidIdThenNoContentStatusIsReturned() throws Exception {
