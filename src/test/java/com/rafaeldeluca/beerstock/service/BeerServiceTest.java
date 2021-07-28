@@ -155,12 +155,9 @@ public class BeerServiceTest {
         verify(beerRepository, times(1)).findById(expectedDeleteBeerDTO.getId());
         verify(beerRepository,times(1)).deleteById(expectedDeleteBeerDTO.getId());
 
-
     }
 
-
     /*
-
 
     @Test
     void whenAlreadyRegisteredBeerInformedThenAnExceptionShouldBeThrown() {

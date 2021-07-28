@@ -149,22 +149,22 @@ public class BeerControllerTest {
                 .andExpect(status().isOk());
     }
 
-    /*
-
     @Test
     void whenDELETEIsCalledWithValidIdThenNoContentStatusIsReturned() throws Exception {
-        // given
+       //given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         doNothing().when(beerService).deleteById(beerDTO.getId());
 
-        // then
-        mockMvc.perform(MockMvcRequestBuilders.delete(BEER_API_URL_PATH + "/" + beerDTO.getId())
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
-    }
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.delete(BEER_API_URL_PATH + "/" +beerDTO.getId())
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isNoContent());
 
+
+    }
+    /*
     @Test
     void whenDELETEIsCalledWithInvalidIdThenNotFoundStatusIsReturned() throws Exception {
         //when
