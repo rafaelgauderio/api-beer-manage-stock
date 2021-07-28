@@ -117,9 +117,6 @@ public class BeerControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    /*
-
-
     @Test
     void whenGETListWithBeersIsCalledThenOkStatusIsReturned() throws Exception {
         // given
@@ -135,7 +132,12 @@ public class BeerControllerTest {
                 .andExpect(jsonPath("$[0].name", is(beerDTO.getName())))
                 .andExpect(jsonPath("$[0].brand", is(beerDTO.getBrand())))
                 .andExpect(jsonPath("$[0].type", is(beerDTO.getType().toString())));
+
     }
+
+    /*
+
+
 
     @Test
     void whenGETListWithoutBeersIsCalledThenOkStatusIsReturned() throws Exception {
