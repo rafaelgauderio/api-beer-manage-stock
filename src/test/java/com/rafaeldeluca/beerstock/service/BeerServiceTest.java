@@ -83,6 +83,23 @@ public class BeerServiceTest {
         assertThrows(BeerAlreadyRegisteredException.class, () -> beerService.createBeer(expectedBeerDTO));
     }
 
+    @Test
+    void whenValidBeerNameisGivenThenReturnABeer() throws BeerNotFoundException {
+        //given
+        BeerDTO expectedFoundBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        Beer expectedFoundBeer = beerMapper.toModel(expectedFoundBeerDTO);
+
+        //when
+        when(beerRepository.findByName(expectedFoundBeer.getName())).thenReturn(Optional.of(expectedFoundBeer));
+
+        //then
+        BeerDTO foundBeerDTO = beerService.findByName(expectedFoundBeerDTO.getName());
+
+        //verifica se object mock é igual ao objeto de retorno
+        assertThat(foundBeerDTO, is(equalTo(expectedFoundBeerDTO)));
+   }
+
+
 
     /*
     @Test
