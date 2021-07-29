@@ -176,7 +176,7 @@ public class BeerServiceTest {
         assertThat(expectedQuantityAfterIncrement, equalTo(incrementedBeerDTO.getQuantity()));
         assertThat(expectedQuantityAfterIncrement, lessThan(expectedBeerDTO.getMax()));
     }
-    /*
+
 
     @Test
     void whenIncrementIsGreatherThanMaxThenThrowException() {
@@ -188,6 +188,8 @@ public class BeerServiceTest {
         int quantityToIncrement = 80;
         assertThrows(BeerStockExceededException.class, () -> beerService.increment(expectedBeerDTO.getId(), quantityToIncrement));
     }
+
+    /*
 
     @Test
     void whenIncrementAfterSumIsGreatherThanMaxThenThrowException() {
